@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-server-service
+spec:
+  type: ClusterIP # Internal service only, as Ingress will expose it
+  selector:
+    app: my-web-server
+  ports:
+  - protocol: TCP
+    port: 8080 # Port exposed by the service
+    targetPort: 8080 # Container's port
