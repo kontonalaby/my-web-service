@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-server-deployment
+  namespace: my-web-server
+spec:
+  replicas: 3 # Number of replicas (pods) to run
+  selector:
+    matchLabels:
+      app: my-web-server
+  template:
+    metadata:
+      labels:
+        app: my-web-server
+    spec:
+      containers:
+      - name: my-web-server
+        image: kontonalaby/my-web-server:latest # Use Docker Hub image
+        ports:
+        - containerPort: 8080 # Expose port inside the container
