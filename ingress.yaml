@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-web-server-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / # In case you want path rewriting
+spec:
+  rules:
+  - host: mywebserver.local # Replace with your actual domain or IP
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-web-server-service
+            port:
+              number: 8080
